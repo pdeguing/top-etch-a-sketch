@@ -1,6 +1,13 @@
 const container = document.querySelector("#container");
 let gridSize = 16;
 
+function getRandomHSLColor() {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = Math.floor(Math.random() * 100);
+  const lightness = Math.floor(Math.random() * 100);
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
 function buildGrid(size) {
   container.replaceChildren();
   for (let i = 0; i < size * size; i++) {
@@ -22,7 +29,7 @@ function buildGrid(size) {
 buildGrid(gridSize);
 
 function changeColorOnHover(event) {
-  event.target.style.backgroundColor = "darkgrey"; // e.g., 'red', '#FF0000', 'rgba(255, 0, 0, 0.5)'
+  event.target.style.backgroundColor = getRandomHSLColor(); // e.g., 'red', '#FF0000', 'rgba(255, 0, 0, 0.5)'
 }
 
 const button = document.querySelector("#new");
